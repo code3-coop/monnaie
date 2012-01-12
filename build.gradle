@@ -1,0 +1,17 @@
+group = 'ca.code3.finance'
+
+apply plugin: 'groovy'
+apply plugin: 'maven'
+repositories {
+  mavenLocal()
+  mavenCentral()
+}
+configure(install.repositories.mavenInstaller) {
+  pom.project {
+    version '1.0'
+    artifactId 'monnaie'
+  }
+}
+dependencies {
+  groovy "org.codehaus.groovy:groovy-all:1.8.1"
+}
