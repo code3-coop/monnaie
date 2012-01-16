@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012  CODE3
+ * Copyright (C) 2012  CODE3 Cooperative de solidarite
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
