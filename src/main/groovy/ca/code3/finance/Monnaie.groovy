@@ -58,10 +58,14 @@ final class Monnaie implements Comparable<Monnaie> {
         new Monnaie( montant / diviseur )
     }
     
-    String format() {
-        NumberFormat.currencyInstance.format( montant )
+    String format( Locale locale ) {
+        NumberFormat.getCurrencyInstance( locale ).format( montant )
     }
     
+    String format() {
+        format( Locale.getDefault() )
+    }
+
     Object asType( Class classe ) {
         if ( classe == BigDecimal ) { return montant }
         if ( classe == String ) { return toString() }
