@@ -20,12 +20,16 @@ package ca.code3.finance
 import java.math.RoundingMode
 import java.text.NumberFormat
 
-final class Monnaie implements Comparable<Monnaie>{
+final class Monnaie implements Comparable<Monnaie> {
     
     static final ZERO = new Monnaie( 0 )
     
     final BigDecimal montant
     
+    static Monnaie valueOf( montant ) {
+        new Monnaie( montant )
+    }
+
     Monnaie( BigDecimal montant ) {
         this.montant = montant.setScale( 2, RoundingMode.HALF_UP )
     }
