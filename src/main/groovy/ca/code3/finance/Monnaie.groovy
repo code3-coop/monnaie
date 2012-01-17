@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012  CODE3
+ * Copyright (C) 2012  CODE3 Cooperative de solidarite
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,12 +20,16 @@ package ca.code3.finance
 import java.math.RoundingMode
 import java.text.NumberFormat
 
-final class Monnaie implements Comparable<Monnaie>{
+final class Monnaie implements Comparable<Monnaie> {
     
     static final ZERO = new Monnaie( 0 )
     
     final BigDecimal montant
     
+    static Monnaie valueOf( montant ) {
+        new Monnaie( montant )
+    }
+
     Monnaie( BigDecimal montant ) {
         this.montant = montant.setScale( 2, RoundingMode.HALF_UP )
     }
@@ -54,10 +58,14 @@ final class Monnaie implements Comparable<Monnaie>{
         new Monnaie( montant / diviseur )
     }
     
-    String format() {
-        NumberFormat.currencyInstance.format( montant )
+    String format( Locale locale ) {
+        NumberFormat.getCurrencyInstance( locale ).format( montant )
     }
     
+    String format() {
+        format( Locale.getDefault() )
+    }
+
     Object asType( Class classe ) {
         if ( classe == BigDecimal ) { return montant }
         if ( classe == String ) { return toString() }
